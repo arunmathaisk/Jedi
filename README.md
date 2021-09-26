@@ -6,7 +6,7 @@
  Here is a rough architecture of our platfrom that we whipped up using Microsoft Paint. Yeah we professionals.
  This project was  designed in a way to keep the ipfs implementation part isolated from the core application itself. Firstly, we were not so well versed in ipfs to begin with and thought lets keep it for the later part
  (traits of a pro coder team).
-<br>
+<br><br>
 ![Architecture](Extras/arch-images/arch1.png)
 <br><br>
 # Why even build this / About this project ?
