@@ -3,10 +3,12 @@
  A fault tolerant (well what is the harm in calling it one), decentralized platform to express the fundamental human right i.e. Free Speech . 
 
 # Architecture
- 
+ Here is a rough architecture of our platfrom that we whipped up using Microsoft Paint. Yeah we professionals.
  This project was  designed in a way to keep the ipfs implementation part isolated from the core application itself. Firstly, we were not so well versed in ipfs to begin with and thought lets keep it for the later part
  (traits of a pro coder team).
-
+<br>
+![Architecture](Extras/arch-iamges/arch1.png)
+<br><br>
 # Why even build this / About this project ?
 
 Yes, a very valid question you all should ask.
