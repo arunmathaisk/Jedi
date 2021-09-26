@@ -7,7 +7,7 @@
  This project was  designed in a way to keep the ipfs implementation part isolated from the core application itself. Firstly, we were not so well versed in ipfs to begin with and thought lets keep it for the later part
  (traits of a pro coder team).
 <br>
-![Architecture](Extras/arch-iamges/arch1.png)
+![Architecture](Extras/arch-images/arch1.png)
 <br><br>
 # Why even build this / About this project ?
 
