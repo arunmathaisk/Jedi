@@ -5,7 +5,7 @@
 
 # Problem Definition 
 
- [Decentralization,Content Deletion,Content Archival, Content Censhorship]
+ [Decentralization,Content Deletion,Content Archival, Content Censhorship]<br><br>
  By todays web standard, that is the web 2.0 , there really existis no decentralization in reality.Everything is governed by a central authority, which then plays the monopoly.
  Our project aims to tackle this problem through a releatively new technology knows as IPFS. 
 
@@ -24,12 +24,12 @@
 # Technology Stack
  [Newer components may or may not be added.]
 
- > Apache     -->  As our main reverse proxy
- > Flask      -->  As the backend api component handler
- > SQLAlchemy -->  As the Object Relational Mapper tool
- > MariaDB    -->  As the database 
- > Java SE    -->  As the Http Client for the IPFS node
- > IPFS Node  -->  The IPFS Daemon itself 
+ * Apache     -->  As our main reverse proxy
+ * Flask      -->  As the backend api component handler
+ * SQLAlchemy -->  As the Object Relational Mapper tool
+ * MariaDB    -->  As the database 
+ * Java SE    -->  As the Http Client for the IPFS node
+ * IPFS Node  -->  The IPFS Daemon itself 
 
 
 # Benifits to society
