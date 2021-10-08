@@ -1,6 +1,7 @@
 # Abstract 
 
  A fault tolerant (well what is the harm in calling it one), decentralized micro-blogging platform to express the fundamental human right i.e. Free Speech .
+ 
 
 
 # Problem Definition 
@@ -14,11 +15,15 @@
  To provide our users a platform where they can truly express themselves without the underlying fear of being monitered, profiled and we try our level best to prevent our user's thoughts from being censored.
 
 # Scope
+ To understand the inner working of IPFS and (design+incorporate) decentralized software system design patterns to existing legacy system architectures.
+ To gain insits on fault taulorent systems and data redundancy techniques specifically.
+ We intend to implement a working model of the core application as soon as possible and then start working on the IPFS part, for that is our main intend.
 
 
 # Existing Systems
  As IPFS is a relatively new technology, there aren't many production ready applications/services out there.
- Some (Quanta) services do exist, but those are purely built on ipfs as a their main storage component. Whereas , our project is a good example as to how one can incorporate IPFS on traditionally architected platforms/services.
+ Some (Quanta) services do exist, but those are purely built on ipfs as a their main storage component.
+ Whereas , our project is a good example as to how one can incorporate IPFS on traditionally architected platforms/services.
 
 
 # Technology Stack
