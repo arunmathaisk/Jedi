@@ -3,7 +3,7 @@
  To build a fault tolerant (well what is the harm in calling it one), 
  decentralized micro-blogging platform to express the fundamental human right i.e. Free Speech .
  Traditional "Social Media" platforms, were never designed to   keep their user's opinions at priority. 
- The gate-keeprs are generally happy as long as they have a huge growing number of daily active users.
+ The gate-keepers are generally happy as long as they have a huge growing number of daily active users.
  They seldom care about what happens to the user's content and usually turn away when matters concerning privacy or goverment interference come to limelight.
  We on the other hand, kind of are not happy with the way things are happening, 
  so we thought of a way were in we can bring about newer people respecting technologies onto the pre-existing ones.
