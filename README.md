@@ -82,7 +82,7 @@ We just intend to to be a twig and hope others help us build the nest.
  <br><br>
  Yes , this project is open source but has been fundamentally buit by us three folks :- 
  <br>
- 1) Arun Mathai (arunmathaisk.in)
+ 1) Arun Mathai (https://arunmathaisk.in)
  2) Soham Kulkarni
  3) Komal Chitnis 
 
