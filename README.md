@@ -1,7 +1,15 @@
 # Project Index
 <!-- TOC -->
-- [All About The Project](#allabouttheproject)
+- [All About This Project](#allabouttheproject)
     - [Abstract](#abstract)
+    - [Problem Definition ](#problem-definition)
+    - [Objective](#objective)
+    - [Scope](#Scope)
+    - [Existing Systems](#existing-systems)
+    - [Technology Stack](#technology-stack)
+    - [Architecture](#architecture)
+    - [Benifits To Society](#benifits-to-society)
+    - [Why even build this / About this project ?](#why-even-build-this/About-this-project?)
  
 <!-- /TOC -->
 
@@ -50,15 +58,11 @@ We just intend to to be a twig and hope others help us build the nest.
  * IPFS Node  -->  The IPFS Daemon itself 
 
 
-## Benifits to society
+## Benifits To Society
 
  A more liberal internet (as it should be ).
  A platform which truly empowers its users to be more authentic and not refrain from expressing themselves.
  Our platform would ensure that our voice and opinions stay heard well beyond time and not be muffled by factors in time.
-
-## Why name it Jedi ?
-
-
 
 ## Architecture
 
