@@ -9,7 +9,7 @@
     - [Technology Stack](#technology-stack)
     - [Architecture](#architecture)
     - [Benifits To Society](#benifits-to-society)
-    - [Why Even Build This ?](#why-even-build-this)
+    - [Why Even Build This?](#why-even-build-this)
  
 <!-- /TOC -->
 
@@ -73,15 +73,16 @@ We just intend to to be a twig and hope others help us build the nest.
  ![Architecture](Extras/arch-images/arch1.png)
  <br><br>
 
-## Why Even Build This ?
+## Why Even Build This?
 
-Yes, a very valid question you all should ask.
-Well, my college had this one project as an academic requirement...
-Our team had other plans , but then that would be kinda really hard to finish in the given time frame with all the other academic and non - academic work we had gotten ourselves into . 
-
-Yes , this project is open source but has been fundamentally buit by us three folks :-
-
-1) Arun Mathai (arunmathaisk.in)
-2) Soham Kulkarni
-3) Komal Chitnis 
+ Yes, a very valid question you all should ask.
+ Well, my college had this one project as an academic requirement...
+ Our team had other plans ,
+ but then that would be kinda really hard to finish in the given time frame with all the other academic and non - academic work we had gotten ourselves into . 
+ <br>
+ Yes , this project is open source but has been fundamentally buit by us three folks :- 
+ <br>
+ 1) Arun Mathai (arunmathaisk.in)
+ 2) Soham Kulkarni
+ 3) Komal Chitnis 
 
