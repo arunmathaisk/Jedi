@@ -9,7 +9,7 @@
     - [Technology Stack](#technology-stack)
     - [Architecture](#architecture)
     - [Benifits To Society](#benifits-to-society)
-    - [Why even build this / About this project ?](#why-even-build-this/About-this-project?)
+    - [Why Even Build This ?](#why-even-build-this)
  
 <!-- /TOC -->
 
@@ -73,7 +73,7 @@ We just intend to to be a twig and hope others help us build the nest.
  ![Architecture](Extras/arch-images/arch1.png)
  <br><br>
 
-## Why even build this / About this project ?
+## Why Even Build This ?
 
 Yes, a very valid question you all should ask.
 Well, my college had this one project as an academic requirement...
