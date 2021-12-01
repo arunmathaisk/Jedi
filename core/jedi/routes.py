@@ -1,5 +1,5 @@
 from flask import Flask
-from jedi_app import app
+from jedi import app
 
 @app.route('/')
 def index():
