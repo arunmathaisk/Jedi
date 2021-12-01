@@ -29,11 +29,11 @@ We just intend to to be a twig and hope others help us build the nest.
 
  [Decentralization,Content Deletion,Content Archival, Content Censhorship] <br><br>
  By todays web standard, that is the web 2.0 , there really existis no decentralization in reality.Everything is governed by a central authority, which then plays the monopoly.
- Our project aims to tackle this problem through a releatively new technology knows as IPFS. 
+ Our project aims to tackle this problem through a releatively new technology knows as IPFS . 
 
 ## Objective
 
- To provide our users a platform where they can truly express themselves without the underlying fear of being monitered, profiled and we try our level best to prevent our user's thoughts from being censored .
+ To provide our users a platform where they can truly express themselves without the underlying fear of being monitered, profiled and we try our level best to prevent our user's thoughts from being censored.
 
 ## Scope
  To understand the inner working of IPFS and (design+incorporate) decentralized software system design patterns to existing legacy system architectures.
