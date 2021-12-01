@@ -33,7 +33,7 @@ We just intend to to be a twig and hope others help us build the nest.
 
 ## Objective
 
- To provide our users a platform where they can truly express themselves without the underlying fear of being monitered, profiled and we try our level best to prevent our user's thoughts from being censored.
+ To provide our users a platform where they can truly express themselves without the underlying fear of being monitered, profiled and we try our level best to prevent our user's thoughts from being censored .
 
 ## Scope
  To understand the inner working of IPFS and (design+incorporate) decentralized software system design patterns to existing legacy system architectures.
