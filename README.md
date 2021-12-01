@@ -27,7 +27,7 @@ We just intend to to be a twig and hope others help us build the nest.
 
 ## Problem Definition 
 
- [Decentralization,Content Deletion,Content Archival, Content Censhorship]<br><br>
+ [Decentralization,Content Deletion,Content Archival, Content Censhorship] <br><br>
  By todays web standard, that is the web 2.0 , there really existis no decentralization in reality.Everything is governed by a central authority, which then plays the monopoly.
  Our project aims to tackle this problem through a releatively new technology knows as IPFS. 
 
