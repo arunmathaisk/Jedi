@@ -6,7 +6,7 @@ class User(db.Model):
     username = db.Column(db.String(15),nullable=False,unique=True)
     email = db.Column(db.String(50),nullable=False,unique=True)
     password = db.Column(db.String(80),nullable=False)   
-    posts = db.relationship('BPost',backref='author',lazy=True)
+    bposts = db.relationship('BPost',backref='author',lazy=True)
 
 
 class BPost(db.Model):
