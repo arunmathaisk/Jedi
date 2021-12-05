@@ -6,10 +6,10 @@ class User(db.Model):
     username = db.Column(db.String(15),nullable=False,unique=True)
     email = db.Column(db.String(50),nullable=False,unique=True)
     password = db.Column(db.String(80),nullable=False)   
-    bposts = db.relationship('BPost',backref='author',lazy=True)
+    blog_posts = db.relationship('BlogPost',backref='author',lazy=True)
 
 
-class BPost(db.Model):
+class BlogPost(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     tweet = db.Column(db.String(500),nullable=False)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
