@@ -8,3 +8,4 @@ db = SQLAlchemy(app)
 
 from jedi.routes import home
 from jedi.routes import createpost
+from jedi.routes import register
