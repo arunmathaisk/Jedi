@@ -6,4 +6,10 @@ from jedi.modals.dbschema import db,User
 def logout():
     if 'uid' in session:
        session.pop('uid', None)
-       return redirect('/')
+    return redirect('/')
+
+@app.post('/logout')
+def poslogout():
+    if 'uid' in session:
+       session.pop('uid', None)
+    return redirect('/')
