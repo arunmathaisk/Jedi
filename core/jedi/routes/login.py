@@ -10,8 +10,9 @@ def login():
 
 @app.post('/login')
 def login_post():
-    username  = request.form['username']
-    password = request.form['password']
+    data = request.get_json()
+    username  = data['username']
+    password  = data['password']
     print(username+ "    " + password)
 
     user = User.query.filter_by(username=username).first()
