@@ -1,6 +1,8 @@
-from flask import Flask,render_template,redirect,request,session
+from flask import Flask, render_template, redirect, request, session
 from jedi import app
-from jedi.modals.dbschema import db,User
+from jedi.modals.dbschema import db, User
+import json
+
 
 @app.get('/login')
 def login():
@@ -8,19 +10,31 @@ def login():
         return redirect('/')
     return render_template('login.html')
 
+
 @app.post('/login')
 def login_post():
     data = request.get_json()
-    username  = data['username']
-    password  = data['password']
-    print(username+ "    " + password)
+    username = data['username']
+    password = data['password']
+    print(username + "    " + password)
 
     user = User.query.filter_by(username=username).first()
+
     if user is None:
-        return "user does not exist"
+        res_obj = {}
+        res_obj.update({"status": 1})
+        res_obj.update({"error": 'user does not exist'})
+        return json.dumps(res_obj)
     else:
         if user.password == password:
             session['uid'] = user.id
-            return "sucessful login by user with " + str(session['uid'])
+            res_obj = {}
+            res_obj.update({"status": 0})
+            res_obj.update({"info": 'successful login'})
+            res_obj.update({"uid": session['uid']})
+            return json.dumps(res_obj)
         else:
-            return "incorrect password"
+            res_obj = {}
+            res_obj.update({"status": 1})
+            res_obj.update({"error": 'incorrect password'})
+            return json.dumps(res_obj)
