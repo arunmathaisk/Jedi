@@ -28,5 +28,5 @@ def recvboostpost():
             db.session.commit()
             res_obj = {}
             res_obj.update({"status": 0})
-            res_obj.update({"info": 'post boosted created successfully'})
+            res_obj.update({"info": 'post boosted successfully'})
             return json.dumps(res_obj)
