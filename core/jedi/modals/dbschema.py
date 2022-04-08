@@ -1,5 +1,4 @@
-from jedi import db
-
+from jedi import db, ma
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,6 +15,17 @@ class Post(db.Model):
 
 class Boostpost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    og_post_id = db.Column(db.String(500), nullable=False)
+    og_post_id = db.Column(db.Integer, nullable=False)
     timestamp = db.Column(db.String(20),nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User 
+        
+
+class PostSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Post
+        
