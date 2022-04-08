@@ -6,8 +6,8 @@ import json
 import datetime
 
 
-@app.post('/ownfeed')
-def feed_post():
+@app.post('/createdposts')
+def created_posts():
     if not 'uid' in session:
         res_obj = {}
         res_obj.update({"status": 1})
