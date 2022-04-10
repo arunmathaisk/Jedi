@@ -1,9 +1,16 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect
 from flask_marshmallow import Marshmallow
 from jedi import app
 from jedi.modals.dbschema import db, ma, User, Post, UserSchema, PostSchema
 import json
 import datetime
+
+@app.get('/feed')
+def login():
+    if not 'uid' in session:
+        return redirect('/login')
+    else:
+        return render_template('feed.html')
 
 
 @app.post('/createdposts')
