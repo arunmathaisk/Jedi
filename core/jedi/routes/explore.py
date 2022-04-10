@@ -5,24 +5,27 @@ from jedi.modals.dbschema import db, ma, User, Post, UserSchema, PostSchema
 import json
 import datetime
 
-@app.get('/feed')
-def feed():
+@app.get('/explore')
+def explore():
     if not 'uid' in session:
         return redirect('/login')
     else:
-        return render_template('feed.html')
+        return render_template('explore.html')
 
 
-@app.post('/createdposts')
-def created_posts():
+@app.post('/explore')
+def explore_post():
     if not 'uid' in session:
         res_obj = {}
         res_obj.update({"status": 1})
         res_obj.update({"error": 'not logged in'})
         return json.dumps(res_obj)
     else:
-        uid = session['uid']
-        posts = Post.query.filter_by(user_id=uid).all()
-        posts_schema = PostSchema(many=True)
-        output = posts_schema.dump(posts)
-        return json.dumps(output)
+        users = User.query.order_by(User.username).all()
+        user_list = []
+        for i in users:
+            tmp_dict = {}
+            tmp_dict.update({"id":i.id})
+            tmp_dict.update({"username":i.username})
+            user_list.append(tmp_dict)
+        return json.dumps(user_list)

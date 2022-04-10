@@ -12,6 +12,7 @@ from jedi.routes import login
 from jedi.routes import logout
 from jedi.routes import home
 from jedi.routes import feed
+from jedi.routes import explore
 from jedi.routes import createpost
 from jedi.routes import register
 
