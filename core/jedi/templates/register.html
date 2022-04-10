@@ -1,17 +1,26 @@
+<!DOCTYPE html>
 <html>
-<body>
-    <form action="" method="POST">
-        <div>
-          <label for="say">Username:</label>
-          <input name="username" id="username" >
-        </div>
-        <div>
-          <label for="to">Password</label>
-          <input name="password" id="password" >
-        </div>
-        <div>
-          <button>Register</button>
-        </div>
-      </form>
-</body>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js" integrity="sha512-w1Bktzax55ZbjW5Mqjz8+mKz4KqRjEUU35Dpq/ath29yskKqIGwNIHiFNp03m/OiJWDXvdQ1/g6aV+l4PeVO7Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="w3.css">
+    <style>
+    </style>
+  </head>
+  <body>
+    <form class="w3-display-middle w3-text-white"  action="" id="login-form">
+      <h1 class="w3-jumbo w3-center w3-padding">Register</h1>
+      <label class="w3-large w3-padding" for="">Username :</label> 
+      <input class="w3-large"id="username" type="text">
+      <br><br>
+      <label class="w3-large w3-padding">Password : </label>
+      <input class="w3-large" id="password" type="password">
+      <br><br>
+      <div class="w3-center w3-large">
+        <p id="status" class="w3-large"></p>
+        <input class="w3-btn"type="submit" value="Register" id="submit">
+      </div>
+    </form>
+    <script src="register.js"></script>
+  </body>
 </html>
