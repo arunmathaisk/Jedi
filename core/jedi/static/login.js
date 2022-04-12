@@ -35,11 +35,7 @@ function submit(username,password){
 function validateLogin(json){
   if(json.status){
     var status=document.getElementsByClassName("status")
-    if(json.error==="user does not exist"){
-      status[0].innerHTML="Please go and <a href='/register'>Register</a>"
-    }else{
-      status[0].innerHTML=json.error
-    }
+    status[0].innerHTML=json.error;
   }else{
     window.location= window.location.origin+"/feed";
   }

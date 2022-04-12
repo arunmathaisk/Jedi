@@ -34,12 +34,8 @@ function submit(username,password){
 function validateRegister(json){
   if(json.status){
     var status=document.getElementsByClassName("status")
-    if(json.error==="user already exists"){
-      status[0].innerHTML="Please go and <a href='/login'>Login</a>"
-    }else{
-
-    }
+    status[0].innerHTML=json.error;
   }else{
-    status[0].innerHTML="<a href='/login'>Login</a> Now"
+    status[0].innerHTML="Go and <a href='/login'>Login</a> Now"
   }
 }

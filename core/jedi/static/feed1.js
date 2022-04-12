@@ -4,11 +4,11 @@ let username_dis=document.getElementsByClassName("user");
 username_dis[0].innerHTML="Hello "+localStorage.getItem("unaem")
 console.log(numb.children.length);
 //Math.floor(Math.random() * 10)
-function createTweetUI(){
+function createTweetUI(username,content){
     console.log("Creating new div");
     const div = document.createElement("div");
     // div.setAttribute("class","w3-");
-    var content='<div class="w3-margin-top tweet w3-container w3-border"><p class="username w3-xlarge w3-padding" id="">Username '+Math.floor(Math.random() * 10)+'1</p><p class="tweet-content class w3-xlarge w3-padding" >fiasndiasndiasndin</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="loadComments();"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    var content='<div class="w3-margin-top tweet w3-container w3-border"><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="loadComments();"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
     div.innerHTML=content;
     if(numb.children.length==0){
         numb.appendChild(div);
@@ -16,7 +16,23 @@ function createTweetUI(){
         numb.insertBefore(div,numb.children[0]);
     }
 }
-// window.onload=setInterval(createTweetUI,2000);
+function asktheServer(){
+  fetch(window.location.origin+"/allposts",{
+  method: "POST",
+  // Adding headers to the request
+  headers: {
+      "Content-type": "application/json; charset=UTF-8"
+  }
+}).then(response=>response.json())
+.then(json=>drawtheTweetUI(json))
+}
+function drawtheTweetUI(json){
+  for(let i=0;i<json.length;i++){
+    createTweetUI(json[i].username,json[i].content);
+  }
+}
+asktheServer()
+// window.onload=setInterval(asktheServer,2000);
 function genPostUI(){
     var x = document.getElementById("Post");
     if (x.className.indexOf("w3-show") == -1) {
@@ -68,8 +84,8 @@ function postTheTweet(){
     content:new_tweet_content.value
   }
   console.log(content)
-  
-  fetch("http://127.0.0.1:5000/createpost", {
+  let url=window.location.origin+"/createdposts"
+  fetch(url, {
      
     // Adding method type
     method: "POST",
@@ -88,6 +104,9 @@ function postTheTweet(){
  
 // Displaying results to console
   .then(json=>validatePost(json));
+
+}
+function validatePost(){
   new_tweet_content.value=""
   genPostUI()
 }
