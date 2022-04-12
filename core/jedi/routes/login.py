@@ -7,7 +7,7 @@ import json
 @app.get('/login')
 def login():
     if 'uid' in session:
-        return redirect('/')
+        return redirect('/feed')
     return render_template('login.html')
 
 
