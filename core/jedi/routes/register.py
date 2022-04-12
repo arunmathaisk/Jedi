@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request, session, redirect
 from jedi import app
 from jedi.modals.dbschema import db,User
 import json
@@ -6,7 +6,10 @@ import json
 
 @app.get('/register')
 def register():
-    return render_template('register.html')
+    if 'uid' in session:
+        return redirect('/feed')
+    else:
+        return render_template('register.html')
 
 
 @app.post('/register')
