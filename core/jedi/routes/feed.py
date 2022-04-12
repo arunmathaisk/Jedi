@@ -13,6 +13,21 @@ def feed():
         return render_template('feed.html')
 
 
+
+@app.post('/allposts')
+def all_posts():
+    if not 'uid' in session:
+        res_obj = {}
+        res_obj.update({"status": 1})
+        res_obj.update({"error": 'not logged in'})
+        return json.dumps(res_obj)
+    else:
+        uid = session['uid']
+        posts = Post.query.all()
+        posts_schema = PostSchema(many=True)
+        output = posts_schema.dump(posts)
+        return json.dumps(output)
+
 @app.post('/createdposts')
 def created_posts():
     if not 'uid' in session:
