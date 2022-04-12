@@ -12,9 +12,15 @@ def register():
 @app.post('/register')
 def register_post():
     data = request.get_json()
-    
+
     username  = data['username']
     password  = data['password']
+
+    if len(username)==0 or len(password)==0 or username is None or password is None:
+        res_obj = {}
+        res_obj.update({"status":1})
+        res_obj.update({"error":'Fields can not be left empty'})
+        return json.dumps(res_obj)
 
     print(username+ "    " + password)
 

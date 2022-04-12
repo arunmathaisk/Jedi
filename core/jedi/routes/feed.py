@@ -52,4 +52,3 @@ def created_posts():
             tmp_dict.update({"id":i.id})
             posts_list.append(tmp_dict)
         return json.dumps(posts_list)
-
