@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <link rel="stylesheet" type="text/css" href="w3.css">
+    <link rel="stylesheet" type="text/css" href="../static/w3.css">
     <style>
     body{
         background-color: #000032;
@@ -59,45 +59,28 @@
             <p><a href="/logout">Logout</a></p>
             </div>
             <div class="w3-container w3-text-white w3-margin w3-padding-large">
-              <p><a href="/logout">Profile</a></p>
+              <p><a href="/feed">Feed</a></p>
             </div>
     </nav>
     <div class="w3-cell-row navoftweets w3-xlarge w3-margin" style="width:75%">
 
         <div class="w3-container w3-cell">
-          <button onclick="loadTweetsforProf(1)"class="w3-btn">My Tweets</button>
+          <button id="mytweets" onclick="changePage(1)"class="w3-btn" style="text-decoration: underline;">My Tweets</button>
         </div>
         <div class="w3-container w3-cell">
-            <button onclick="loadTweetsforProf(2)" class="w3-btn">Retweets</button>
+            <button id="retweets" onclick="changePage(2)" class="w3-btn">Retweets</button>
         </div>
         <div class="w3-container w3-cell">
-            <button onclick="loadTweetsforProf(3)" class="w3-btn">My Bookmarks</button>
+            <button id="bookmarks" onclick="changePage(3)" class="w3-btn">My Bookmarks</button>
         </div>
     </div>
     <div class="content-display">
         <div id="tweets" class="tweets" >
             <div class="tweet w3-container w3-border w3">
-                <p class="w3-hide username w3-xlarge w3-padding" id="">
-                    Username 1
-                </p>
-                <p class="tweet-content class w3-xlarge w3-padding" >
-                    fiasndiasndiasndin
-                </p>
-                <div class="buttons w3-xlarge w3-margin w3-cell-row">
-                    <div class="w3-hide w3-container w3-cell w3-padding-large w3-margin">
-                      <button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button>
-                    </div>
-                    <div class="w3-hide w3-container w3-cell w3-padding-large w3-margin">
-                      <button class="w3-btn" onclick="retweet(this);"><i class="fa fa-retweet"></i> Retweet</button>
-                    </div>
-                    <div class="w3-container w3-cell w3-padding-large w3-margin">
-                      <button class="w3-btn" onclick="share()"><i class="fa fa-share"></i> Share</button>
-                    </div>
-                </div>
+            
             </div>
+        </div>
     </div>
-    </div>
-    
-    <script src="profile.js"></script>
+    <script src="../static/profile.js"></script>
   </body>
 </html>

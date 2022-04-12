@@ -26,3 +26,4 @@ def created_posts():
         posts_schema = PostSchema(many=True)
         output = posts_schema.dump(posts)
         return json.dumps(output)
+
