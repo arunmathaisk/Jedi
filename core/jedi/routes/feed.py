@@ -24,9 +24,14 @@ def all_posts():
     else:
         uid = session['uid']
         posts = Post.query.all()
-        posts_schema = PostSchema(many=True)
-        output = posts_schema.dump(posts)
-        return json.dumps(output)
+        posts_list = []
+        for i in posts:
+            tmp_dict = {}
+            tmp_dict.update({"content":i.content})
+            tmp_dict.update({"timestamp":i.timestamp})
+            tmp_dict.update({"id":i.id})
+            posts_list.append(tmp_dict)
+        return json.dumps(posts_list)
 
 @app.post('/createdposts')
 def created_posts():
@@ -38,7 +43,12 @@ def created_posts():
     else:
         uid = session['uid']
         posts = Post.query.filter_by(user_id=uid).all()
-        posts_schema = PostSchema(many=True)
-        output = posts_schema.dump(posts)
-        return json.dumps(output)
+        posts_list = []
+        for i in posts:
+            tmp_dict = {}
+            tmp_dict.update({"content":i.content})
+            tmp_dict.update({"timestamp":i.timestamp})
+            tmp_dict.update({"id":i.id})
+            posts_list.append(tmp_dict)
+        return json.dumps(posts_list)
 
