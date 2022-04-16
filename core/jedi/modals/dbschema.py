@@ -10,7 +10,13 @@ class User(db.Model):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(500), nullable=False)
+    content_hash = db.Column(db.String(1024), nullable=False)
     timestamp = db.Column(db.String(20),nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+class Bookmark(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.String(500), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 class Boostpost(db.Model):

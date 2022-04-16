@@ -84,7 +84,7 @@ function postTheTweet(){
     content:new_tweet_content.value
   }
   console.log(content)
-  let url=window.location.origin+"/createdposts"
+  let url=window.location.origin+"/createpost"
   fetch(url, {
      
     // Adding method type

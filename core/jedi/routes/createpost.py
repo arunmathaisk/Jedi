@@ -3,6 +3,7 @@ from jedi import app
 from jedi.modals.dbschema import db, User, Post
 import json
 import datetime
+import os, sys
 
 
 @app.get('/createpost')
@@ -28,7 +29,13 @@ def recvpost():
         new_content = data['content']
         current_time = str(datetime.datetime.now())
         user = User.query.get(session['uid'])
-        post = Post(content=new_content, timestamp=current_time, user=user)
+        cmd = f'echo {new_content} > temp.txt'
+        r = os.popen(cmd)
+        comd = 'curl -X POST -F file=@temp.txt ' + '"http://127.0.0.1:5001/api/v0/add"'
+        result = os.popen(comd)
+        a = json.loads(result.read())
+        new_content_hash = a['Hash']
+        post = Post(content=new_content,content_hash=new_content_hash,timestamp=current_time, user=user)
         db.session.add(post)
         db.session.commit()
         res_obj = {}
