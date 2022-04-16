@@ -7,4 +7,6 @@ import datetime
 
 @app.get('/profile')
 def profile():
-     return render_template('profile.html')
+   if uid not in session:
+      return redirect('/login')
+   return render_template('profile.html')
