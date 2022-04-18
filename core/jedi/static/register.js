@@ -36,6 +36,6 @@ function validateRegister(json){
     var status=document.getElementsByClassName("status")
     status[0].innerHTML=json.error;
   }else{
-    status[0].innerHTML="Go and <a href='/login'>Login</a> Now"
+    status[0].innerHTML=json.message;
   }
 }

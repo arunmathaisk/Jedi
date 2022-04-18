@@ -23,7 +23,8 @@ def login_post():
     if user is None:
         res_obj = {}
         res_obj.update({"status": 1})
-        res_obj.update({"error": 'user does not exist'})
+        # user does not exist
+        res_obj.update({"error": "User doesnt exist so Go and <a href='/register'>Register</a>"})
         return json.dumps(res_obj)
     else:
         if user.password == password:
