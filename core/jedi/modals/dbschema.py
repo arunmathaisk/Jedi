@@ -1,4 +1,4 @@
-from jedi import db, ma
+from jedi import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -25,13 +25,3 @@ class Boostpost(db.Model):
     timestamp = db.Column(db.String(20),nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-
-class UserSchema(ma.SQLAlchemyAutoSchema):
-    class Meta:
-        model = User 
-        
-
-class PostSchema(ma.SQLAlchemyAutoSchema):
-    class Meta:
-        model = Post
-        

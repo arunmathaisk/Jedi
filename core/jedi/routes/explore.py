@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, session, redirect
-from flask_marshmallow import Marshmallow
 from jedi import app
-from jedi.modals.dbschema import db, ma, User, Post, UserSchema, PostSchema
+from jedi.modals.dbschema import db, User
 import json
 import datetime
 

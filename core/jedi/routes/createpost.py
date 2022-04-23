@@ -29,9 +29,10 @@ def recvpost():
         new_content = data['content']
         current_time = str(datetime.datetime.now())
         user = User.query.get(session['uid'])
-        cmd = f'echo {new_content} > temp.txt'
+        temp_file_name = str(session['uid'])
+        cmd = f'echo {new_content} > {temp_file_name}.txt'
         r = os.popen(cmd)
-        comd = 'curl -X POST -F file=@temp.txt ' + '"http://127.0.0.1:5001/api/v0/add"'
+        comd = f'curl -X POST -F file=@{temp_file_name}.txt ' + '"http://127.0.0.1:5001/api/v0/add"'
         result = os.popen(comd)
         a = json.loads(result.read())
         new_content_hash = a['Hash']

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect
 from jedi import app
-from jedi.modals.dbschema import db, ma, User, Post, UserSchema, PostSchema
+from jedi.modals.dbschema import db, User, Post
 import json
 import datetime
 from feedgen.feed import FeedGenerator
