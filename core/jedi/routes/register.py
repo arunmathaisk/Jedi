@@ -35,10 +35,10 @@ def register_post():
         db.session.commit()
         res_obj = {}
         res_obj.update({"status":0})
-        res_obj.update({"message":"Go and <a href='/register'>Register</a>"})
+        res_obj.update({"message":"Successful!!!! Please go and <a href='/login'>Login</a>"})
         return json.dumps(res_obj)
     else:
         res_obj = {}
         res_obj.update({"status":1})
-        res_obj.update({"error":"Successful!!!! Please go and <a href='/login'>Login</a>"})
+        res_obj.update({"error":"User already exists"})
         return json.dumps(res_obj)

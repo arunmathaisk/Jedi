@@ -32,8 +32,8 @@ function submit(username,password){
     .then(json => validateRegister(json))
 }
 function validateRegister(json){
+  var status=document.getElementsByClassName("status")
   if(json.status){
-    var status=document.getElementsByClassName("status")
     status[0].innerHTML=json.error;
   }else{
     status[0].innerHTML=json.message;
