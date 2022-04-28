@@ -12,7 +12,7 @@ function submit(username,password){
     password:password
   }
   console.log(cred)
-  fetch("http://127.0.0.1:5000/login", {
+  fetch(window.location.origin+"/login", {
      
     // Adding method type
     method: "POST",
