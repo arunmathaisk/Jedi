@@ -22,6 +22,7 @@ function changePage(choice){
         console.log(retweet_button)
         console.log(numb.children)
         numb.innerHTML=""
+        loadTweetsforProf(2)
         numb.innerHTML="<p class='w3-center w3-large'>No Retweets Yet</p>"
         break;
         case 3:
@@ -44,7 +45,7 @@ function loadTweetsforProf(choice){
             console.log(url)
             break;
         case 2:
-            url=url+"/retweets"
+            url=url+"/boostedposts"
             break;
         case 3:
             url=url+"/bookmarks"
@@ -59,11 +60,19 @@ function loadTweetsforProf(choice){
     .then(json => handleData(json,choice));
 }
 function handleData(json,choice){
-    console.log(json.length)
+    console.log(choice)
+    // console.log(json.length)
     if(json.length!=0){
-        for(let i=0;i<json.length;i++){
-            createTweetUI(json[i].content)
+        if(choice==1){
+            for(let i=0;i<json.length;i++){
+                createTweetUI(json[i].content,choice,"")
+            }
+        }else if(choice==2){
+            for(let i=0;i<json.length;i++){
+                createTweetUI(json[i].og_post_content,choice,json[i].og_post_username)
+            }
         }
+
     }else{
         if(choice===1){
             numb.innerHTML="<p class='w3-center w3-large'>Nothing Posted yet</p>"
@@ -75,11 +84,16 @@ function handleData(json,choice){
     }
 
 }
-function createTweetUI(content){
+function createTweetUI(content,choice,username){
     console.log("Creating new div");
     const div = document.createElement("div");
     // div.setAttribute("class","w3-");
-    var content='<div class="w3-margin-top tweet w3-container w3-border"><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="loadComments();"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    
+    if(choice==1){
+        var content='<div class="w3-margin-top tweet w3-container w3-border"><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="loadComments();"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    }else if(choice==2){
+        var content='<div class="w3-margin-top tweet w3-container w3-border"><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" ><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    }
     div.innerHTML=content;
     if(numb.children.length==0){
         numb.appendChild(div);
