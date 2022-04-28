@@ -8,7 +8,7 @@ function createTweetUI(username,content,id){
     console.log("Creating new div");
     const div = document.createElement("div");
     // div.setAttribute("class","w3-");
-    var content='<div class="w3-margin-top tweet w3-container w3-border" ><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    var content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
     div.innerHTML=content;
     if(numb.children.length==0){
         numb.appendChild(div);
@@ -65,7 +65,7 @@ function retweet(element){
     element.innerHTML="<i class='fa fa-retweet'></i> Retweet"
   }else{
   element.style.color="lightgreen"
-  console.log(element.parentNode)
+  boostThePost(element)
   element.innerHTML="<i class='fa fa-retweet'></i> Retweeted"
   }
 }
@@ -110,4 +110,28 @@ function postTheTweet(){
 function validatePost(){
   new_tweet_content.value=""
   genPostUI()
+}
+function boostThePost(element){
+  var og_post_id={
+    og_post_id:parseInt(element.parentNode.getAttribute('data-row'))
+  }
+  fetch(window.location.origin+"/boostpost", {
+     
+    // Adding method type
+    method: "POST",
+     
+    // Adding body or contents to send
+    body: JSON.stringify(og_post_id),
+     
+    // Adding headers to the request
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+})
+ 
+// Converting to JSON
+  .then(response => response.json())
+ 
+// Displaying results to console
+  .then(json=>element(json,element));
 }
