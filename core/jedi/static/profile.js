@@ -23,7 +23,7 @@ function changePage(choice){
         console.log(numb.children)
         numb.innerHTML=""
         loadTweetsforProf(2)
-        numb.innerHTML="<p class='w3-center w3-large'>No Retweets Yet</p>"
+        // numb.innerHTML="<p class='w3-center w3-large'>No Retweets Yet</p>"
         break;
         case 3:
         mytweets.style.textDecoration="none"
@@ -32,7 +32,7 @@ function changePage(choice){
         console.log(bookmark_button)
         console.log(numb.children)
         numb.innerHTML=""
-        numb.innerHTML="<p class='w3-center w3-large'>No Tweets Bookmarked</p>"
+        // numb.innerHTML="<p class='w3-center w3-large'>No Tweets Bookmarked</p>"
         break;
       }
 }
@@ -60,7 +60,6 @@ function loadTweetsforProf(choice){
     .then(json => handleData(json,choice));
 }
 function handleData(json,choice){
-    console.log(choice)
     // console.log(json.length)
     if(json.length!=0){
         if(choice==1){

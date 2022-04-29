@@ -4,11 +4,11 @@ let username_dis=document.getElementsByClassName("user");
 username_dis[0].innerHTML="Hello "+localStorage.getItem("unaem")
 console.log(numb.children.length);
 //Math.floor(Math.random() * 10)
-function createTweetUI(username,content,id){
+function createTweetUI(username,content,id,hash){
     console.log("Creating new div");
     const div = document.createElement("div");
     // div.setAttribute("class","w3-");
-    var content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    var content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-hash='+hash+'><button class="w3-btn" onclick=share(this)><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
     div.innerHTML=content;
     if(numb.children.length==0){
         numb.appendChild(div);
@@ -16,7 +16,22 @@ function createTweetUI(username,content,id){
         numb.insertBefore(div,numb.children[0]);
     }
 }
-function asktheServer(){
+function createReTweetUI(id,username1,username2,content,hash){
+  const div = document.createElement("div");
+  // div.setAttribute("class","w3-");
+  var content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username1+' retweets</p><p class="username w3-large w3-padding" id="">'+username2+'</p><p class="tweet-content class w3-large w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin " data-hash='+hash+'><button class="w3-btn" onclick="share(this)"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+  if(username1==username_dis){
+    console.log('asdns')
+    var content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username1+' retweets</p><p class="username w3-large w3-padding" id="">'+username2+'</p><p class="tweet-content class w3-large w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn w3-disabled " style="color:lightgreen" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweeted</button></div><div class="w3-container w3-cell w3-padding-large w3-margin"><button class="w3-btn"><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+  }
+  div.innerHTML=content;
+  if(numb.children.length==0){
+      numb.appendChild(div);
+  }else{
+      numb.insertBefore(div,numb.children[0]);
+  }
+}
+function asktheServer(){  
   fetch(window.location.origin+"/allposts",{
   method: "POST",
   // Adding headers to the request
@@ -25,10 +40,25 @@ function asktheServer(){
   }
 }).then(response=>response.json())
 .then(json=>drawtheTweetUI(json))
+
+fetch(window.location.origin+"/allboostedposts",{
+  method: "POST",
+  // Adding headers to the request
+  headers: {
+      "Content-type": "application/json; charset=UTF-8"
+  }
+}).then(response=>response.json())
+.then(json=>drawtheReTweetUI(json))
+}
+function drawtheReTweetUI(json){
+  console.log(json)
+  for(let i=0;i<json.length;i++){
+    createReTweetUI(json[i].boostpost_id,json[i].boosteduser_username,json[i].og_post_username,json[i].og_post_content,json[i].og_content_hash);
+  }
 }
 function drawtheTweetUI(json){
   for(let i=0;i<json.length;i++){
-    createTweetUI(json[i].username,json[i].content,json[i].id);
+    createTweetUI(json[i].username,json[i].content,json[i].id,json[i].content_hash);
   }
 }
 asktheServer()
@@ -134,4 +164,14 @@ function boostThePost(element){
  
 // Displaying results to console
   .then(json=>element(json,element));
+}
+function share(element){
+  var content_hash=element.parentNode.getAttribute("data-hash")
+  var url_share="https://ipfs.io/ipfs/"+content_hash
+  console.log(url_share)
+  if(navigator.clipboard.writeText(url_share)){
+    var share_status=document.getElementById("copiedstatus")
+    share_status.style.display="block";
+    share_status.innerText="Copied to Clipboard"
+  }
 }

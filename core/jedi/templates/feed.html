@@ -42,7 +42,11 @@
         position:fixed;
         bottom:25px;
     }
-
+    #copiedstatus{
+      position: fixed;
+      left:75px;
+      display:none;
+    }
     .Comments{
         width: 1200;
     }
@@ -52,6 +56,7 @@
     }
     #Post{
         background-color: #000032;
+        position:fixed;
     }
     </style>
   </head>
@@ -73,8 +78,9 @@
     </nav>
     <div id="tweets" class="tweets" >
         <!-- <div class="tweet w3-container w3-border w3">
-            <p class="username w3-xlarge w3-padding" id="">Username 1</p>
-            <p class="tweet-content class w3-xlarge w3-padding" >
+            <p class="username w3-xlarge w3-padding" id="">Username retweets</p>
+            <p class="username w3-large w3-padding" id="">Username 1</p>
+            <p class="tweet-content class w3-large w3-padding" >
                 fiasndiasndiasndin
             </p>
             <div class="buttons w3-xlarge w3-margin w3-cell-row">
@@ -122,6 +128,7 @@
       <button class="w3-btn w3-left w3-large" onclick="postTheTweet();">Post</button>
       <div id="count" class="w3-large w3-right"style="line-height:65px;">odaod</div>
     </div>
+    <div class="w3-display-bottomleft copiedstatus w3-center" id="copiedstatus">Soham</div>
     <script src="../static/feed1.js"></script>
   </body>
 </html>
