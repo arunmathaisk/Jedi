@@ -106,7 +106,7 @@ function bookmark(element){
     element.innerHTML="<i class='fa fa-bookmark'></i> Bookmark"
   }else{
     element.style.color="lightgreen"
-
+    bookmarkThePost(element)
     element.innerHTML="<i class='fa fa-bookmark'></i> Bookmarked"
   }
 }
@@ -175,3 +175,30 @@ function share(element){
     share_status.innerText="Copied to Clipboard"
   }
 }
+function bookmarkThePost(element){
+  var post_id=parseInt(element.parentNode.getAttribute('data-row'))
+  var post_json={
+    post_id:post_id
+  }
+  fetch(window.location.origin+"/bookmarkpost", {
+     
+    // Adding method type
+    method: "POST",
+     
+    // Adding body or contents to send
+    body: JSON.stringify(post_json),
+     
+    // Adding headers to the request
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+})
+ 
+// Converting to JSON
+  .then(response => response.json())
+ 
+// Displaying results to console
+  .then(json=>console.log(json));
+}
+
+
