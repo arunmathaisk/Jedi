@@ -15,5 +15,6 @@ from jedi.routes import createpost
 from jedi.routes import register
 from jedi.routes import boostpost
 from jedi.routes import profile
+from jedi.routes import bookmark
 from jedi.routes import rss
 
