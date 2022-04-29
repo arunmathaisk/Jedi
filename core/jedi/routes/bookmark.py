@@ -36,3 +36,28 @@ def bookmarkpost():
                 res_obj.update({"status": 1})
                 res_obj.update({"error": 'Bookmark has already been added'})
                 return json.dumps(res_obj)
+
+
+@app.post('/bookmarkedposts')
+def bookmarkedposts():
+    if not 'uid' in session:
+        res_obj = {}
+        res_obj.update({"status": 1})
+        res_obj.update({"error": 'not logged in'})
+        return json.dumps(res_obj)
+    else:
+        uid = session['uid']
+        boostedposts = Bookmark.query.filter_by(user_id=uid).all()
+        boostedposts_list = []
+        for i in boostedposts:
+            post  =  Post.query.get(i.post_id)
+            user = User.query.get(i.user_id)
+            tmp_dict = {}
+            tmp_dict.update({"bookmark_id":i.id})
+            tmp_dict.update({"post_id":post.id})
+            tmp_dict.update({"post_username":user.username})
+            tmp_dict.update({"post_content":post.content})
+            tmp_dict.update({"content_hash":post.content_hash})
+            tmp_dict.update({"timestamp":post.timestamp})
+            boostedposts_list.append(tmp_dict)
+        return json.dumps(boostedposts_list)
