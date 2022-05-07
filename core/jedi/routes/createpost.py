@@ -4,7 +4,7 @@ from jedi.modals.dbschema import db, User, Post
 import json
 import datetime
 import os, sys
-
+import bleach
 
 @app.get('/createpost')
 def createpost():
@@ -27,6 +27,7 @@ def recvpost():
     else:
         data = request.get_json()
         new_content = data['content']
+        new_content = bleach.linkify(bleach.clean(new_content))
         current_time = str(datetime.datetime.now())
         user = User.query.get(session['uid'])
         temp_file_name = 'temp_posts/'+ str(session['uid'])

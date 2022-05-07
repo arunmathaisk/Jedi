@@ -3,6 +3,7 @@ from jedi import app
 from jedi.modals.dbschema import db,User
 import json
 import bcrypt
+import bleach
 
 
 @app.get('/register')
@@ -17,7 +18,7 @@ def register():
 def register_post():
     data = request.get_json()
 
-    username  = data['username']
+    username = bleach.linkify(bleach.clean(data['username']))
     password  = data['password']
 
     if len(username)==0 or len(password)==0 or username is None or password is None:
