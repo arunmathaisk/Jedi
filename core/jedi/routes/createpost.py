@@ -29,7 +29,7 @@ def recvpost():
         new_content = data['content']
         current_time = str(datetime.datetime.now())
         user = User.query.get(session['uid'])
-        temp_file_name = str(session['uid'])
+        temp_file_name = 'temp_posts/'+ str(session['uid'])
         cmd = f'echo {new_content} > {temp_file_name}.txt'
         r = os.popen(cmd)
         comd = f'curl -X POST -F file=@{temp_file_name}.txt ' + '"http://127.0.0.1:5001/api/v0/add"'
