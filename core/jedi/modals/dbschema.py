@@ -3,7 +3,7 @@ from jedi import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
+    password = db.Column(db.String(300), nullable=False)
     posts = db.relationship('Post', backref='user', lazy=True)
     boostposts = db.relationship('Boostpost', backref='user', lazy=True)
     bookmarks = db.relationship('Bookmark', backref='user', lazy=True)

@@ -2,6 +2,7 @@ from flask import Flask,render_template,request, session, redirect
 from jedi import app
 from jedi.modals.dbschema import db,User
 import json
+import bcrypt
 
 
 @app.get('/register')
@@ -30,7 +31,10 @@ def register_post():
     user = User.query.filter_by(username=username).first()
 
     if user is None:
-        user =  User(username=username, password=password)
+        bytePwd = password.encode('utf-8')
+        salt = bcrypt.gensalt()
+        hashed = bcrypt.hashpw(bytePwd,salt)
+        user =  User(username=username, password=hashed)
         db.session.add(user)
         db.session.commit()
         res_obj = {}

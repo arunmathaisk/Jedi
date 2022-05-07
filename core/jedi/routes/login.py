@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, session
 from jedi import app
 from jedi.modals.dbschema import db, User
 import json
+import bcrypt
 
 
 @app.get('/login')
@@ -27,7 +28,7 @@ def login_post():
         res_obj.update({"error": "User doesnt exist so Go and <a href='/register'>Register</a>"})
         return json.dumps(res_obj)
     else:
-        if user.password == password:
+        if bcrypt.checkpw(password.encode('utf-8'),user.password):
             session['uid'] = user.id
             res_obj = {}
             res_obj.update({"status": 0})
