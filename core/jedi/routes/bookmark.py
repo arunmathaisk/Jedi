@@ -47,11 +47,11 @@ def bookmarkedposts():
         return json.dumps(res_obj)
     else:
         uid = session['uid']
-        boostedposts = Bookmark.query.filter_by(user_id=uid).all()
-        boostedposts_list = []
-        for i in boostedposts:
+        bookmarks = Bookmark.query.filter_by(user_id=uid).all()
+        bookmarks_list = []
+        for i in bookmarks:
             post  =  Post.query.get(i.post_id)
-            user = User.query.get(i.user_id)
+            user = User.query.get(post.user_id)
             tmp_dict = {}
             tmp_dict.update({"bookmark_id":i.id})
             tmp_dict.update({"post_id":post.id})
@@ -59,5 +59,5 @@ def bookmarkedposts():
             tmp_dict.update({"post_content":post.content})
             tmp_dict.update({"content_hash":post.content_hash})
             tmp_dict.update({"timestamp":post.timestamp})
-            boostedposts_list.append(tmp_dict)
-        return json.dumps(boostedposts_list)
+            bookmarks_list.append(tmp_dict)
+        return json.dumps(bookmarks_list)
