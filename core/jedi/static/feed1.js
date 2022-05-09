@@ -5,10 +5,29 @@ username_dis[0].innerHTML="Hello "+localStorage.getItem("unaem")
 console.log(numb.children.length);
 //Math.floor(Math.random() * 10)
 function createTweetUI(username,content,id,hash){
+    var content
+    // content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-hash='+hash+'><button class="w3-btn" onclick=share(this)><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    // if(isRetweet(id) && isBookmark(id)){
+    //   content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button style="color:lightgreen" class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmarked</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweeted</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-hash='+hash+'><button class="w3-btn" onclick=share(this)><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    // }
+    if(isRetweet(id)){
+      content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button style="color:lightgreen"class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweeted</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-hash='+hash+'><button class="w3-btn" onclick=share(this)><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    }else if(isBookmark(id)){
+      content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button style="color:lightgreen" class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmarked</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-hash='+hash+'><button class="w3-btn" onclick=share(this)><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    }else if(isRetweet(id) && isBookmark(id)){
+      content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button style="color:lighthgreen" class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmarked</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button style="color:lightgreen"class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweeted</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-hash='+hash+'><button class="w3-btn" onclick=share(this)><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    }else{
+      content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-hash='+hash+'><button class="w3-btn" onclick=share(this)><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    }
+
+    
+    // if(isRetweet(id) && isBookmark(id)){
+
+    // }
     console.log("Creating new div");
     const div = document.createElement("div");
     // div.setAttribute("class","w3-");
-    var content='<div class="w3-margin-top tweet w3-container w3-border" data-row='+id+'><p class="username w3-xlarge w3-padding" id="">'+username+'</p><p class="tweet-content class w3-xlarge w3-padding" >'+content+'</p><div class="buttons w3-xlarge w3-margin w3-cell-row"><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="bookmark(this);"><i class="fa fa-bookmark"></i> Bookmark</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-row='+id+'><button class="w3-btn" onclick="retweet(this)"><i class="fa fa-retweet"></i> Retweet</button></div><div class="w3-container w3-cell w3-padding-large w3-margin" data-hash='+hash+'><button class="w3-btn" onclick=share(this)><i class="fa fa-share"></i> Share</button></div></div></div><div class="w3-hide w3-container Comments w3-border "></div>'
+    
     div.innerHTML=content;
     if(numb.children.length==0){
         numb.appendChild(div);
@@ -32,6 +51,16 @@ function createReTweetUI(id,username1,username2,content,hash){
   }
 }
 function asktheServer(){  
+  fetch(window.location.origin+"/bookmarkedposts",{
+    method: "POST",
+    // Adding headers to the request
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+  }).then(response=>response.json())
+  .then(json=>putBookmarksinLS(json))
+
+
   fetch(window.location.origin+"/allposts",{
   method: "POST",
   // Adding headers to the request
@@ -49,6 +78,15 @@ fetch(window.location.origin+"/allboostedposts",{
   }
 }).then(response=>response.json())
 .then(json=>drawtheReTweetUI(json))
+
+fetch(window.location.origin+"/boostedposts",{
+  method: "POST",
+  // Adding headers to the request
+  headers: {
+      "Content-type": "application/json; charset=UTF-8"
+  }
+}).then(response=>response.json())
+.then(json=>putRetweetsinLS(json))
 }
 function drawtheReTweetUI(json){
   console.log(json)
@@ -202,3 +240,31 @@ function bookmarkThePost(element){
 }
 
 
+function putRetweetsinLS(json){
+  localStorage.setItem("Retweet",JSON.stringify(json))
+}
+function isRetweet(id){
+  var flag=false
+  var retweets_info=JSON.parse(localStorage.getItem("Retweet"))
+  // console.log(retweets_info)
+  for(let i=0;i<retweets_info.length;i++){
+    if(retweets_info[i].og_post_id==id){
+      flag= true
+    }
+  }
+  return flag;
+}
+function putBookmarksinLS(json){
+  localStorage.setItem("Bookmark",JSON.stringify(json))
+}
+function isBookmark(id){
+  var flag=false
+  var bookamrks_info=JSON.parse(localStorage.getItem("Bookmark"))
+  // console.log(retweets_info)
+  for(let j=0;j<bookamrks_info.length;j++){
+    if(bookamrks_info[j].post_id==id){
+      flag= true
+    }
+  }
+  return flag;
+}
